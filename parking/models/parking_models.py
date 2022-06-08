@@ -22,7 +22,7 @@ class Brand(models.Model):
 
 class Model(models.Model):
     name = models.CharField(max_length=40)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, related_name="car_brand")
+    brand = models.ForeignKey(Brand, on_delete=models.RESTRICT, related_name="car_brand")
 
     class Meta:
         unique_together = ('name', 'brand')
@@ -82,9 +82,9 @@ class Car(models.Model):
 
 
 class ParkingTracking(models.Model):
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=False,
+    car = models.ForeignKey(Car, on_delete=models.RESTRICT, null=False,
                             related_name="tracked_car")
-    activity = models.ForeignKey(Activity, on_delete=models.CASCADE, null=True, blank=True,
+    activity = models.ForeignKey(Activity, on_delete=models.RESTRICT, null=True, blank=True,
                                  related_name="tracked_activity")
     activity_date = models.DateTimeField(auto_now_add=True)
 
@@ -97,7 +97,7 @@ class ParkingTracking(models.Model):
 
 
 class ParkingCharge(models.Model):
-    parking = models.ForeignKey(ParkingTracking, on_delete=models.CASCADE, null=False,
+    parking = models.ForeignKey(ParkingTracking, on_delete=models.RESTRICT, null=False,
                                 related_name="parked_car")
     duration = models.DurationField(null=True, blank=True)
     charge = MoneyField(max_digits=14, decimal_places=2, default_currency='TZS')
