@@ -1,0 +1,116 @@
+$theme_color: #6e1e0f;
+$theme_color_hover: #7c0303;
+$theme_white: white;
+$theme_dark: #272626;
+
+.theme-text {
+    color: $theme_color;
+}
+
+.theme-background {
+    background-color: $theme_color;
+    color: $theme_white;
+}
+
+.theme-btn {
+    background-color: $theme_color_hover;
+    color: $theme_white;
+}
+.theme-btn:hover {
+    background-color: $theme_color;
+    color: $theme_white;
+}
+
+.list-card {
+    border:1px solid #7a7a7a;
+    margin-left: 3rem;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 9px;
+    transition: all 0.4s ease-in-out;
+}
+
+.list-card:hover {
+    background-color: #6e1e0f;
+    color: #fff;
+}
+
+.theme-btn {
+    background-color: $theme_color;
+    color: $theme_white;
+}
+
+// header style
+.skin-blue .main-header .navbar {
+    background-color: $theme_color;
+}
+
+// toggle
+.skin-blue .main-header .navbar .sidebar-toggle {
+    color: rgb(255, 255, 255);
+}
+
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+    background-color: $theme_color_hover;
+}
+
+
+// sidebar header 
+.skin-blue .main-header .logo {
+    background-color: $theme_color;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+.skin-blue .main-header .logo:hover {
+    background-color: $theme_color;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+
+// sidebar 
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #272626;
+}
+
+//side bar search input
+.skin-blue .sidebar-form input[type="text"], .skin-blue .sidebar-form .btn {
+    box-shadow: none;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    height: 35px;
+}
+
+//side bar main navigation
+.skin-blue .sidebar-menu>li.header {
+    color: #ffffff;
+    background: #272626;
+}
+
+// side bar list 
+.skin-blue .sidebar-menu>a, .skin-blue .sidebar-menu>li.active>a {
+    color: $theme_color;
+    background: #ecf0f5;
+    border-left-color: $theme_color;
+}
+
+.skin-blue .sidebar-menu>li:hover>a{
+    color: #7c0303;
+    background: $theme_white ;
+    border-left-color: $theme_color;
+}
+
+//sidebar drop down
+.skin-blue .treeview-menu>li>a {
+    color: #ffffff;
+}
+.skin-blue .sidebar-menu>li>.treeview-menu {
+    margin: 0 1px;
+    background: $theme_color;
+}
+
+
+a:hover {
+    cursor:pointer;
+}
+div.container { max-width: 1200px }
