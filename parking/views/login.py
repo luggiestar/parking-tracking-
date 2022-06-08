@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
+from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -18,13 +19,14 @@ def login_view(request):
                 login(request, user)
 
                 if request.user.is_superuser or request.user.is_staff:
-
-                    return redirect("admin:index")
+                    # return redirect("admin:index")
+                    return HttpResponse("Success")
 
         else:
             # messages.error(request, f"Invalid username or password. please make sure you enter valid credentials")
             messages.success(request, 'Invalid username or password')
-            return redirect('parking:login')
+            # return redirect('parking:login')
+            return HttpResponse("error")
 
     context = {
         'title':title
