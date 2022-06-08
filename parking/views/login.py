@@ -19,8 +19,8 @@ def login_view(request):
                 login(request, user)
 
                 if request.user.is_superuser or request.user.is_staff:
-                    # return redirect("admin:index")
-                    return HttpResponse("Success")
+                    return redirect("admin:index")
+                    # return HttpResponse("Success")
 
         else:
             # messages.error(request, f"Invalid username or password. please make sure you enter valid credentials")
