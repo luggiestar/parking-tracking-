@@ -105,6 +105,7 @@ DATABASES = {
         'PASSWORD': '1234',
         'HOST': '127.0.0.1', 
         'PORT': '5432',
+        'CONN_MAX_AGE': 500,
         'OPTIONS': {
             # 'sql_mode':'traditional'
         }
@@ -169,11 +170,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
+
+
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
-# import dj_database_url
-
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
