@@ -176,4 +176,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # DATABASES['default'].update(prod_db)
 
 import dj_database_url
-DATABASES['default'] = dj_database_url.config(ssl_require=True)
+DATABASES['default'] = dj_database_url.config()
