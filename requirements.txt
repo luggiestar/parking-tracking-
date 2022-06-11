@@ -21,14 +21,17 @@ django-widget-tweaks==1.4.12
 djangorestframework==3.13.1
 et-xmlfile==1.1.0
 fonttools==4.33.3
+future==0.18.2
 gunicorn==20.1.0
 html5lib==1.1
 idna==3.3
 MarkupPy==1.14
+mysql-client==0.0.1
 mysqlclient==2.1.0
 odfpy==1.4.1
 openpyxl==3.0.9
 Pillow==9.1.0
+psycopg2==2.9.3
 psycopg2-binary==2.9.3
 py-moneyed==1.2
 pycparser==2.21
