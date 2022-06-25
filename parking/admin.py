@@ -97,10 +97,10 @@ class ParkingTrackingAdmin(ImportExportModelAdmin):
     list_filter = ['car', 'activity']
 
     def has_add_permission(self, request):
-        return False
+        return True
 
     def has_change_permission(self, request, obj=None):
-        return False
+        return True
 
 
 admin.site.register(ParkingTracking, ParkingTrackingAdmin)
