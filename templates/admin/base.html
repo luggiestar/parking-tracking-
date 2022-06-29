@@ -315,8 +315,9 @@
                     </a>
                     {% if not app.admin_url %}
                         <ul class="treeview-menu">
-                            <li><a href="" ><i class="fa fa-heartbeat"></i>Parking Track</a></li>
+                            <li><a href="{% url 'parking:parking_info' %}" ><i class="fa fa-heartbeat"></i>Parking Track</a></li>
                             <li><a href="" ><i class="fa fa-stethoscope"></i>Registration</a></li>
+                            <li><a href="{% url 'parking:parking_info' %}" ><i class="fa fa-stethoscope"></i>Parking Info</a></li>
                         </ul>
                     {% endif %}
                 </li>

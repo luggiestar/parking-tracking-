@@ -53,4 +53,4 @@ from ..forms import *
 #     return render(request, "admin/donation_result.html", context)
 
 def parking_info(request):
-    return render(request, 'parking.html')
+    return render(request, 'admin/parking.html')

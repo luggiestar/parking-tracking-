@@ -19,7 +19,7 @@
 {% block content %}
 {% if not request.user.is_superuser %}
 <script>
-    window.location="{% url 'BLOOD:donation' %}"
+    window.location="{% url 'parking:parking_info' %}"
 </script>
 {% endif %}
 <div id="content-main">
