@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
@@ -8,7 +8,7 @@ from django.contrib.auth.forms import AuthenticationForm
 def login_view(request):
     title = "Login Page"
     template = "login.html"
-    
+
     if request.method == "POST":
         form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
@@ -29,8 +29,13 @@ def login_view(request):
             return HttpResponse("error")
 
     context = {
-        'title':title
+        'title': title
 
     }
 
     return render(request, template, context)
+
+
+def logout_view(request):
+    logout(request)
+    redirect("login:parking")

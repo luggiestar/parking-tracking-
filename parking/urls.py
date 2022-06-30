@@ -5,6 +5,7 @@ from .views import *
 app_name = 'parking'
 urlpatterns = [
     path('', login_view, name="login"),
+    path('logout/', logout_view, name="logout"),
     # path('blood-donation/', donation, name="donation"),
     # path('pending-donation/', pending_donation, name="pending_donation"),
     # path('save-test/<donation_id>', save_test, name="save_test"),
