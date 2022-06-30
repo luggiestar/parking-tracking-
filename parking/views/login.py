@@ -38,4 +38,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    redirect("parking:login")
+    return redirect("parking:login")
