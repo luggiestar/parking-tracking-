@@ -111,8 +111,8 @@ class ParkingChargeAdmin(ImportExportModelAdmin):
     search_fields = ['parking']
     list_filter = ['parking']
 
-    def has_add_permission(self, request):
-        return False
+    # def has_add_permission(self, request):
+    #     return False
 
     def has_change_permission(self, request, obj=None):
         return False

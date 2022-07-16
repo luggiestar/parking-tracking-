@@ -1,3 +1,4 @@
+from django.db.models import Sum
 from django.shortcuts import render, get_object_or_404
 import datetime
 from rest_framework import generics
@@ -43,7 +44,7 @@ def exit_import_parking(request):
 
 def day_amount(request):
     today = datetime.datetime.now()
-    exit = ParkingTracking.objects.filter(activity__event='EXIT').count()
+    amount = ParkingCharge.objects.all().aggregate(Sum('charge')).get('charge__sum', 0.00)
     print(today)
-    print(exit)
-    return HttpResponse(str(exit))
+    print(amount)
+    return HttpResponse(str(amount))
