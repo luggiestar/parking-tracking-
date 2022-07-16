@@ -24,8 +24,8 @@ def login_view(request):
 
         else:
             # messages.error(request, f"Invalid username or password. please make sure you enter valid credentials")
-            messages.success(request, 'Invalid username or password')
-            # return redirect('parking:login')
+            messages.error(request, 'Invalid username or password')
+            return redirect('parking:login')
             return HttpResponse("error")
 
     context = {

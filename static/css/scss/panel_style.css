@@ -3,7 +3,7 @@
 }
 
 .theme-background {
-  background-color: #6e1e0f;
+  background-color: #363636;
   color: white;
 }
 
@@ -37,31 +37,33 @@
 }
 
 .skin-blue .main-header .navbar {
-  background-color: #6e1e0f;
+  background-color: #ffffff;
+  color: #6e1e0f;
 }
 
 .skin-blue .main-header .navbar .sidebar-toggle {
-  color: rgb(255, 255, 255);
+  color: #af3e27;
 }
 
 .skin-blue .main-header .navbar .sidebar-toggle:hover {
-  background-color: #7c0303;
+  background-color: #fff;
+  color: #af3e27;
 }
 
 .skin-blue .main-header .logo {
-  background-color: #6e1e0f;
+  background-color: #000000;
   color: #fff;
   border-bottom: 0 solid transparent;
 }
 
 .skin-blue .main-header .logo:hover {
-  background-color: #6e1e0f;
+  background-color: #000000;
   color: #fff;
   border-bottom: 0 solid transparent;
 }
 
 .skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
-  background-color: #272626;
+  background-color: #000000;
 }
 
 .skin-blue .sidebar-form input[type=text], .skin-blue .sidebar-form .btn {
@@ -77,8 +79,8 @@
 }
 
 .skin-blue .sidebar-menu > a, .skin-blue .sidebar-menu > li.active > a {
-  color: #6e1e0f;
-  background: #ecf0f5;
+  color: #fff;
+  background: #000000;
   border-left-color: #6e1e0f;
 }
 
@@ -104,3 +106,7 @@ a:hover {
 div.container {
   max-width: 1200px;
 }/*# sourceMappingURL=panel_style.css.map */
+
+.skin-blue .main-header .navbar .nav>li>a {
+    color: #af3e27;
+}
