@@ -10,23 +10,44 @@
 {% block content_title %} {% trans 'Parking Tracking' %} {% endblock %}
 
 {% block content %}
-
+    <style>
+        .shadow {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
 <div id="content-main">
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-4">
+                <div class="panel shadow">
+                    <div class="panel-body">
+                        <div style="display: flex; justify-content: space-between">
+                            <h4>Entrace</h4>
+                            <h4><i class="fa fa-sign-in fa-2x text-danger spinner"></i> </h4>
+                        </div>
+                        <h3 id="entrace"></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
                 <div class="panel border-left shadow">
                     <div class="panel-body">
-                        <h4>Entrace</h4>
-                        <h3 id="entrace">  </h3>
+                        <div style="display: flex; justify-content: space-between">
+                            <h4>Parking</h4>
+                            <h4><i class="fa fa-stop-circle fa-2x text-danger spinner"></i> </h4>
+                        </div>
+                        <h3 id="parking"></h3>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="panel border-left shadow">
+                <div class="panel shadow">
                     <div class="panel-body">
-                        <h4>Parking</h4>
-                        <h3 id="parking">  </h3>
+                        <div style="display: flex; justify-content: space-between">
+                            <h4>Exit</h4>
+                            <h4><i class="fa fa-sign-out fa-2x text-danger spinner"></i> </h4>
+                        </div>
+                        <h3 id="aout">888</h3>
                     </div>
                 </div>
             </div>
@@ -58,7 +79,6 @@
                 console.log(data);
             }
         })
-       
     }
     $(document).ready(function() {
         setInterval(function () {
