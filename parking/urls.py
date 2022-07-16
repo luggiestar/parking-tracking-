@@ -16,7 +16,9 @@ urlpatterns = [
     path('<int:pk>/',DetailParking.as_view()),
     path('parking-import-entrace', parking_import_entrace, name="parking_import_entrace"),
     path('parking-import-parking', parking_import_parking, name="parking_import_parking"),
-    
+    path('exit-import-parking', exit_import_parking, name="exit_import_parking"),
+    path('day-amount', day_amount, name="day_amount"),
+
     path('parking-info', parking_info, name="parking_info")
 
 ]

@@ -19,15 +19,31 @@ class DetailParking(generics.RetrieveUpdateDestroyAPIView):
 
 def parking_import_entrace(request):
     today = datetime.datetime.now()
-    entrace = ParkingTracking.objects.filter(activity__event = 'ENTRANCE').count()
+    entrace = ParkingTracking.objects.filter(activity__event='ENTRANCE').count()
     print(today)
     print(entrace)
     return HttpResponse(str(entrace))
+
 
 def parking_import_parking(request):
     today = datetime.datetime.now()
-    entrace = ParkingTracking.objects.filter(activity__event = 'PARKING').count()
+    entrace = ParkingTracking.objects.filter(activity__event='PARKING').count()
     print(today)
     print(entrace)
     return HttpResponse(str(entrace))
 
+
+def exit_import_parking(request):
+    today = datetime.datetime.now()
+    exit = ParkingTracking.objects.filter(activity__event='EXIT').count()
+    print(today)
+    print(exit)
+    return HttpResponse(str(exit))
+
+
+def day_amount(request):
+    today = datetime.datetime.now()
+    exit = ParkingTracking.objects.filter(activity__event='EXIT').count()
+    print(today)
+    print(exit)
+    return HttpResponse(str(exit))
