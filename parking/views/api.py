@@ -43,8 +43,14 @@ def exit_import_parking(request):
 
 
 def day_amount(request):
-    today = datetime.datetime.now()
-    amount = ParkingCharge.objects.all().aggregate(Sum('charge')).get('charge__sum', 0.00)
+    today = datetime.datetime.now().date()
+
+    get_amount = ParkingCharge.objects.all().aggregate(Sum('charge')).get('charge__sum', 0.00)
+    if get_amount:
+        amount = get_amount
+    else:
+        amount = "0.00"
+
     print(today)
     print(amount)
     return HttpResponse(str(amount))
