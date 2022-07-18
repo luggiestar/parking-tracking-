@@ -9,7 +9,10 @@ import datetime
 
 def parking_info(request):
     today = datetime.datetime.now().date()
+    get_amount = ParkingCharge.objects.all().first()
+
     contexts = {
         'date': today,
+        'today': get_amount,
     }
     return render(request, 'admin/parking.html', contexts)
