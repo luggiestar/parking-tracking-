@@ -195,7 +195,7 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
 @receiver(post_save, sender=ParkingTracking, dispatch_uid='check_tracking')
 def check_tracking(sender, instance, created, raw=False, **kwargs):
     if created:
-        try:
+        # try:
 
             get_fee = Fee.objects.first()
             get_last_tracking = ParkingTracking.objects.filter(car=instance.car).order_by(
@@ -214,10 +214,10 @@ def check_tracking(sender, instance, created, raw=False, **kwargs):
                 print(gettt)
                 get_charges = get_fee.amount * decimal.Decimal(gettt)
                 ParkingCharge.objects.create(parking=instance, duration=diff, charge=get_charges)
-        except:
-
-            if instance.activity.event == "EXIT":
-                instance.delete()
+        # except:
+        #
+        #     if instance.activity.event == "EXIT":
+        #         instance.delete()
 
         # elif created and instance.activity == "PARKING":
         #
