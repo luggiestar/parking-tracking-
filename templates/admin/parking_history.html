@@ -66,6 +66,7 @@
                                     <td>car</td>
                                     <td>Car Type</td>
                                     <td>Owner</td>
+                                    <td>Contact</td>
                                     <td>Entrance</td>
                                     <td>Parking</td>
                                     <td>Exit</td>
@@ -74,15 +75,16 @@
                                 </tr>
                                 {% for x in report %}
                                     <tr>
-                                        <td>{{forloop.counter}<td>
-                                        <td>{{x.car.plate}<td>
-                                        <td>{{x.car.model}<td>
-                                        <td>{{x.car.owner.first_name}<td>
-                                        <td>{{car.entrance}<td>
-                                        <td>{{car.parking}<td>
-                                        <td>{{car.exit}<td>
-                                        <td>{{car.duration}<td>
-                                        <td>{{car.charge}<td>
+                                        <td>{{forloop.counter}}<td>
+                                        <td>{{x.car.plate}}<td>
+                                        <td>{{x.car.model}}<td>
+                                        <td>{{x.car.owner.first_name}} &nbsp;{{x.car.owner.last_name}}<td>
+                                        <td>{{x.car.owner.phone}}<td>
+                                        <td>{{car.entrance}}<td>
+                                        <td>{{car.parking}}<td>
+                                        <td>{{car.exit}}<td>
+                                        <td>{{car.duration}}<td>
+                                        <td>{{car.charge}}<td>
 
 
                                     </tr>
