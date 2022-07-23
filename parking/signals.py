@@ -87,6 +87,7 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
                     add_tracking.save()
                     instance.is_valid = True
                     instance.save()
+                    ParkingReport.objects.create(car=instance.car, entrance=instance.activity_date)
                 # else:
                 #     instance.is_valid = False
                 #     instance.delete()
@@ -102,6 +103,9 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
                     add_tracking.save()
                     instance.is_valid = True
                     instance.save()
+                    update_report = ParkingReport.objects.filter(car=instance.car).order_by('-id').first()
+                    update_report.parking = instance.activity_date
+                    update_report.save()
             if instance.activity == "EXIT":
 
                 if get_last_tracking.activity.event == "PARKING":
@@ -114,6 +118,8 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
                     add_tracking.save()
                     instance.is_valid = True
                     instance.save()
+
+
 
         except:
             if instance.activity == "ENTRANCE":
@@ -134,6 +140,7 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
                     else:
                         instance.is_valid = True
                         instance.save()
+                        ParkingReport.objects.create(car=instance.car, entrance=instance.activity_date)
 
         # elif created and instance.activity == "PARKING":
         #
@@ -213,7 +220,14 @@ def check_tracking(sender, instance, created, raw=False, **kwargs):
 
                 print(gettt)
                 get_charges = get_fee.amount * decimal.Decimal(gettt)
-                ParkingCharge.objects.create(parking=instance, duration=diff, charge=get_charges)
+                save_charge=ParkingCharge.objects.create(parking=instance, duration=diff, charge=get_charges)
+                if save_charge:
+                    update_report = ParkingReport.objects.filter(car=save_charge.parking.car).order_by('-id').first()
+                    update_report.exit = save_charge.date
+                    update_report.duration = save_charge.duration
+                    update_report.charge = save_charge.charge
+                    update_report.save()
+
         except:
 
             if instance.activity.event == "EXIT":

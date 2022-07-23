@@ -19,6 +19,7 @@ urlpatterns = [
     path('exit-import-parking', exit_import_parking, name="exit_import_parking"),
     path('day-amount', day_amount, name="day_amount"),
 
-    path('parking-info', parking_info, name="parking_info")
+    path('parking-info', parking_info, name="parking_info"),
+    path('parking-range', report_range, name="report_range")
 
 ]

@@ -19,7 +19,7 @@ class CustomUserAdmin(UserAdmin):
     list_filter = ('username', 'email', 'is_staff', 'is_active',)
     fieldsets = (
         (None, {'fields': ('username', 'email', 'password')}),
-        ('personal', {'fields': ('first_name', 'middle_name', 'last_name', 'sex', 'phone','dob',),
+        ('personal', {'fields': ('first_name', 'middle_name', 'last_name', 'sex', 'phone', 'dob',),
                       }),
 
         ('Permissions', {'fields': ('is_superuser', 'is_staff', 'is_active', 'groups',
@@ -44,6 +44,7 @@ class BrandAdmin(ImportExportModelAdmin):
 
 
 admin.site.register(Brand, BrandAdmin)
+
 
 class ModelAdmin(ImportExportModelAdmin):
     list_display = ('name', 'brand')
@@ -77,9 +78,9 @@ admin.site.register(Activity, ActivityAdmin)
 
 
 class CarAdmin(ImportExportModelAdmin):
-    list_display = ('plate','model','owner','registered_on')
+    list_display = ('plate', 'model', 'owner', 'registered_on')
     search_fields = ['plate']
-    list_filter = ['model','owner']
+    list_filter = ['model', 'owner']
 
     # def has_add_permission(self, request):
     #     return False
@@ -92,7 +93,7 @@ admin.site.register(Car, CarAdmin)
 
 
 class ParkingTrackingAdmin(ImportExportModelAdmin):
-    list_display = ('car', 'activity','activity_date')
+    list_display = ('car', 'activity', 'activity_date')
     search_fields = ['car']
     list_filter = ['car', 'activity']
 
@@ -107,7 +108,7 @@ admin.site.register(ParkingTracking, ParkingTrackingAdmin)
 
 
 class ParkingChargeAdmin(ImportExportModelAdmin):
-    list_display = ('parking', 'duration','charge','date')
+    list_display = ('parking', 'duration', 'charge', 'date')
     search_fields = ['parking']
     list_filter = ['parking']
 
@@ -118,10 +119,24 @@ class ParkingChargeAdmin(ImportExportModelAdmin):
         return False
 
 
+class ParkingReportAdmin(ImportExportModelAdmin):
+    list_display = ('car', 'entrance', 'parking', 'exit', 'duration', 'charge')
+    search_fields = ['car']
+    list_filter = ['car']
+
+    # def has_add_permission(self, request):
+    #     return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+
 admin.site.register(ParkingCharge, ParkingChargeAdmin)
+admin.site.register(ParkingReport, ParkingReportAdmin)
+
 
 class ParkingImportAdmin(ImportExportModelAdmin):
-    list_display = ('plate', 'activity','is_valid','date')
+    list_display = ('plate', 'activity', 'is_valid', 'date')
     search_fields = ['plate']
     list_filter = ['plate']
 
@@ -132,6 +147,4 @@ class ParkingImportAdmin(ImportExportModelAdmin):
     #     return False
 
 
-admin.site.register(ParkingImport,ParkingImportAdmin)
-
-
+admin.site.register(ParkingImport, ParkingImportAdmin)

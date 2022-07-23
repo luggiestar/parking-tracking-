@@ -96,6 +96,23 @@ class ParkingTracking(models.Model):
         return "{0}-{1}".format(self.car, self.activity)
 
 
+class ParkingReport(models.Model):
+    car = models.ForeignKey(Car, on_delete=models.RESTRICT, null=False,
+                            related_name="parking_car_report")
+
+    entrance = models.DateTimeField(null=True, blank=True)
+    parking = models.DateTimeField(null=True, blank=True)
+    exit = models.DateTimeField(null=True, blank=True)
+    duration = models.DurationField(null=True, blank=True)
+    charge = MoneyField(max_digits=14, decimal_places=2, default_currency='TZS')
+
+    class Meta:
+        verbose_name = "Parking Report"
+        verbose_name_plural = "Parking Parking"
+
+    def __str__(self):
+        return "{0}-{1}".format(self.car, self.duration)
+
 class ParkingCharge(models.Model):
     parking = models.ForeignKey(ParkingTracking, on_delete=models.RESTRICT, null=False,
                                 related_name="parked_car")
