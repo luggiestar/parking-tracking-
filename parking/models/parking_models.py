@@ -104,7 +104,7 @@ class ParkingReport(models.Model):
     parking = models.DateTimeField(null=True, blank=True)
     exit = models.DateTimeField(null=True, blank=True)
     duration = models.DurationField(null=True, blank=True)
-    charge = MoneyField(max_digits=14, decimal_places=2, default_currency='TZS',blank=True,null=True)
+    charge = MoneyField(max_digits=14, decimal_places=2, default_currency='TZS',default=0.00)
 
     class Meta:
         verbose_name = "Parking Report"
