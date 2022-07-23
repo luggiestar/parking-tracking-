@@ -28,9 +28,9 @@ def report_range(request):
             try:
                 from_date = request.GET['date1']
                 to_date = request.GET['date2']
-                code = request.GET.get('complainant_code', False)
+                # code = request.GET.get('complainant_code', False)
                 get_report = ParkingReport.objects.filter(entrance__date__range=[from_date, to_date]).order_by('id')
-                count_report = ParkingTracking.objects.filter(entrance__date__range=[from_date, to_date]).order_by('id').count()
+                count_report = ParkingReport.objects.filter(entrance__date__range=[from_date, to_date]).order_by('id').count()
 
                 context = {
                     'report': get_report,
