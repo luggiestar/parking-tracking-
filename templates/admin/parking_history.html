@@ -59,19 +59,21 @@
                     {% if count_report > 0 %}
 
                         <div style="margin-top: 3rem">
-                             <h4>Report From <b>{{from_date}}</b> To <b>{{to_date}}</b></h4>
+                             <h4>Report From <b>{{from_date}}</b> To <b>{{to_date}}</b> </h4>
+                             <h5>{{count_report}} records found </h5>
+                            <hr>
                             <table class="table">
                                 <tr>
-                                    <td>#</td>
-                                    <td>car</td>
-                                    <td>Car Type</td>
-                                    <td>Owner</td>
-                                    <td>Contact</td>
-                                    <td>Entrance</td>
-                                    <td>Parking</td>
-                                    <td>Exit</td>
-                                    <td>Duration</td>
-                                    <td>Charge</td>
+                                    <th>#</th>
+                                    <th>car</th>
+                                    <th>Car Type</th>
+                                    <th>Owner</th>
+                                    <th>Contact</th>
+                                    <th>Entrance</th>
+                                    <th>Parking</th>
+                                    <th>Exit</th>
+                                    <th>Duration</th>
+                                    <th>Charge</th>
                                 </tr>
                                 {% for x in report %}
                                     <tr>
