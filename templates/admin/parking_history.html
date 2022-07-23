@@ -81,33 +81,10 @@ tr:nth-child(even) {
                              <h4>Report From <b>{{from_date}}</b> To <b>{{to_date}}</b> </h4>
                              <h5>{{count_report}} records found </h5>
                             <hr>
-                            <table>
-                              <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Points</th>
-                              </tr>
-                              <tr>
-                                <td>Jill</td>
-                                <td>Smith</td>
-                                <td>50</td>
-                              </tr>
-                              <tr>
-                                <td>Eve</td>
-                                <td>Jackson</td>
-                                <td>94</td>
-                              </tr>
-                              <tr>
-                                <td>Adam</td>
-                                <td>Johnson</td>
-                                <td>67</td>
-                              </tr>
-                            </table>
-
 
                             <table>
                                 <tr>
-                                    <th>#</th>
+                                    <th>s/N</th>
                                     <th>car</th>
                                     <th>Car Type</th>
                                     <th>Owner</th>
@@ -120,16 +97,16 @@ tr:nth-child(even) {
                                 </tr>
                                 {% for x in report %}
                                     <tr>
-                                        <td>{{forloop.counter}}<td>
-                                        <td>{{x.car.plate}}<td>
-                                        <td>{{x.car.model}}<td>
-                                        <td>{{x.car.owner.first_name}} &nbsp;{{x.car.owner.last_name}}<td>
-                                        <td>{{x.car.owner.phone}}<td>
-                                        <td>{{x.entrance}}<td>
-                                        <td>{{x.parking}}<td>
-                                        <td>{{x.exit}}<td>
-                                        <td>{{x.duration}}<td>
-                                        <td>{{x.charge}}<td>
+                                        <td>{{forloop.counter}}</td>
+                                        <td>{{x.car.plate}}</td>
+                                        <td>{{x.car.model}}</td>
+                                        <td>{{x.car.owner.first_name}} &nbsp;{{x.car.owner.last_name}}</td>
+                                        <td>{{x.car.owner.phone}}</td>
+                                        <td>{{x.entrance}}</td>
+                                        <td>{{x.parking}}</td>
+                                        <td>{{x.exit}}</td>
+                                        <td>{{x.duration}}</td>
+                                        <td>{{x.charge}}</td>
 
 
                                     </tr>
