@@ -11,6 +11,25 @@
 
 {% block content %}
  <style>
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+th, td {
+  text-align: left;
+  padding: 16px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+
 .mu-bg-oranges{
   background-color: #d4694e;
   color: white;
@@ -62,7 +81,7 @@
                              <h4>Report From <b>{{from_date}}</b> To <b>{{to_date}}</b> </h4>
                              <h5>{{count_report}} records found </h5>
                             <hr>
-                            <table class="table">
+                            <table>
                                 <tr>
                                     <th>#</th>
                                     <th>car</th>
