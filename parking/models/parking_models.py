@@ -104,11 +104,11 @@ class ParkingReport(models.Model):
     parking = models.DateTimeField(null=True, blank=True)
     exit = models.DateTimeField(null=True, blank=True)
     duration = models.DurationField(null=True, blank=True)
-    charge = MoneyField(max_digits=14, decimal_places=2, default_currency='TZS')
+    charge = MoneyField(max_digits=14, decimal_places=2, default_currency='TZS',blank=True,null=True)
 
     class Meta:
         verbose_name = "Parking Report"
-        verbose_name_plural = "Parking Parking"
+        verbose_name_plural = "Parking Report"
 
     def __str__(self):
         return "{0}-{1}".format(self.car, self.duration)
