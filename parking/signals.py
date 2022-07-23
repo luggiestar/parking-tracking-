@@ -87,7 +87,6 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
                     add_tracking.save()
                     instance.is_valid = True
                     instance.save()
-                    ParkingReport.objects.create(car=instance.car, entrance=instance.activity_date)
                 # else:
                 #     instance.is_valid = False
                 #     instance.delete()
@@ -103,9 +102,7 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
                     add_tracking.save()
                     instance.is_valid = True
                     instance.save()
-                    update_report = ParkingReport.objects.filter(car=instance.car).order_by('-id').first()
-                    update_report.parking = instance.activity_date
-                    update_report.save()
+
             if instance.activity == "EXIT":
 
                 if get_last_tracking.activity.event == "PARKING":
@@ -140,63 +137,6 @@ def import_donors(sender, instance, created, raw=False, **kwargs):
                     else:
                         instance.is_valid = True
                         instance.save()
-                        ParkingReport.objects.create(car=instance.car, entrance=instance.activity_date)
-
-        # elif created and instance.activity == "PARKING":
-        #
-        #     get_last_tracking = ParkingImport.objects.filter(plate=instance.plate).order_by('-id').first()
-        #     if get_last_tracking.activity == "ENTRANCE":
-        #         get_event = Activity.objects.filter(event=instance.activity).first()
-        #
-        #         add_tracking = ParkingTracking(car=get_car,
-        #                                        activity=get_event,
-        #
-        #                                        )
-        #         add_tracking.save()
-        #         instance.is_valid = True
-        #         instance.save()
-        #
-        #
-        #
-        # elif created and instance.activity == "EXIT":
-        #
-        #     get_last_tracking = ParkingImport.objects.filter(plate=instance.plate).order_by('-id').first()
-        #     if get_last_tracking.activity == "PARKING":
-        #         get_event = Activity.objects.filter(event="EXIT").first()
-        #         add_tracking = ParkingTracking(car=get_car,
-        #                                        activity=get_event,
-        #
-        #                                        )
-        #         add_tracking.save()
-        #         instance.is_valid = True
-        #         instance.save()
-        #         if add_tracking:
-        #             get_latest_date = instance.date
-        #             get_last_date = get_last_tracking.activity_date
-        #             diff = get_latest_date - get_last_date
-        #
-        #             x = time.strptime(str(diff).split(',')[0], '%H:%M:%S.%f')
-        #             gettt = (datetime.timedelta(hours=x.tm_hour, minutes=x.tm_min, seconds=x.tm_sec).total_seconds()) / 3600
-        #
-        #             print(gettt)
-        #             get_charges = get_fee.amount * decimal.Decimal(gettt)
-        #             ParkingCharge.objects.create(parking=add_tracking, duration=diff, charge=get_charges)
-
-        # if instance.activity == "EXIT" and get_last_tracking.activity.event == "PARKING":
-        #
-        #     get_latest_date = add_tracking.activity_date
-        #     get_last_date = get_last_tracking.activity_date
-        #     diff = get_latest_date - get_last_date
-        #
-        #     x = time.strptime(str(diff).split(',')[0], '%H:%M:%S.%f')
-        #     gettt = (datetime.timedelta(hours=x.tm_hour, minutes=x.tm_min, seconds=x.tm_sec).total_seconds()) / 3600
-        #
-        #     print(gettt)
-        #     get_charges = get_fee.amount * decimal.Decimal(gettt)
-        #     ParkingCharge.objects.create(parking=add_tracking, duration=diff, charge=get_charges)
-
-        # get_import = DonorImport.objects.filter(id=instance.id).first()
-        # get_import.delete()
 
 
 @receiver(post_save, sender=ParkingTracking, dispatch_uid='check_tracking')
@@ -208,6 +148,13 @@ def check_tracking(sender, instance, created, raw=False, **kwargs):
             get_last_tracking = ParkingTracking.objects.filter(car=instance.car).order_by(
                 '-id')[1]
             car1 = get_last_tracking.car
+            if instance.activity.event == "ENTRANCE":
+                ParkingReport.objects.create(car=instance.car, entrance=instance.activity_date)
+            if instance.activity.event == "PARKING":
+                update_report = ParkingReport.objects.filter(car=instance.car).order_by('-id').first()
+                update_report.parking = instance.activity_date
+                update_report.save()
+
             # print(instance.activity.event == "EXIT" and get_last_tracking.activity.event == "PARKING")
 
             if instance.activity.event == "EXIT" and get_last_tracking.activity.event == "PARKING":
@@ -220,7 +167,7 @@ def check_tracking(sender, instance, created, raw=False, **kwargs):
 
                 print(gettt)
                 get_charges = get_fee.amount * decimal.Decimal(gettt)
-                save_charge=ParkingCharge.objects.create(parking=instance, duration=diff, charge=get_charges)
+                save_charge = ParkingCharge.objects.create(parking=instance, duration=diff, charge=get_charges)
                 if save_charge:
                     update_report = ParkingReport.objects.filter(car=save_charge.parking.car).order_by('-id').first()
                     update_report.exit = save_charge.date
