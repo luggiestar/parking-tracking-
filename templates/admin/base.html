@@ -318,6 +318,22 @@
                         </ul>
                     {% endif %}
                 </li>
+
+                {% if  request.user.is_superuser %}
+                <li {% if not app.admin_url %}class="treeview"{% endif %}>
+                    <a href="{% if app.admin_url %}{{app.admin_url}}{% else %}javascript:void(0){% endif %}">
+                        <i class="fas {% if app.icon %} {{app.icon}} {% else %}fa-users{% endif %} text-white"></i>
+                        <span style="overflow: hidden; display: inline-block; vertical-align:top;"> &nbsp;&nbsp;User management</span>
+                        {% if not app.admin_url %}
+                        <span class="pull-right-container">
+                                  <i class="fa fa-angle-left pull-right"></i></span>
+                        {% endif %}
+                    </a>
+                     <ul class="treeview-menu">
+                        <li><a href="{% url 'POLICE:staff_list' %}" ><i class="fa {% if model.icon %} {{model.icon}} {% else %}{% endif %}"></i>User List</a></li>
+                    </ul>
+                </li>
+            {% endif %}
             </ul>
         </section>
         <!-- /.sidebar -->
