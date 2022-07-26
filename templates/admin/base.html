@@ -130,7 +130,7 @@
                                 <img src={% static "admin/dist/img/default.jpg" %} class="img-circle" alt="User Image">
                                 {% endif %}
                                 <p>
-                                    {{ request.user.username }} -
+                                    {{ request.user.username }}
                                     {% if request.user.is_superuser %}
                                     {% trans "Super manager" %}
                                     {% else %}
@@ -219,13 +219,11 @@
             {% endif %}
            
             <ul class="sidebar-menu">
-                {% if request.user.is_superuser %}
                     <li>
                         <a id="adminIndex" href="{% url 'admin:index' %}">
                             <i class="fa fa-dashboard"></i> <span>{% trans 'Dashboard' %}</span>
                         </a>
                     </li>
-                {% endif %}
                 {% if adminlte.main_navigation_app %}
 
                 {% get_menu request as app_list %}
