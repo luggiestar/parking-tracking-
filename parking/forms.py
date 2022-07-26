@@ -5,7 +5,6 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django import forms
 from django.forms import ModelForm
 
-
 from .models import *
 
 User = get_user_model()
@@ -42,6 +41,11 @@ class EntryForm(ModelForm):
         fields = ('first_name', 'middle_name', 'last_name', 'sex', 'phone', 'email')
 
 
+class StaffRegistrationForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ('first_name', 'middle_name', 'last_name', 'title', 'sex', 'phone', 'station')
+
 
 # class TestForm(ModelForm):
 #     class Meta:
@@ -69,5 +73,3 @@ class EntryForm(ModelForm):
 
 class DateInput(forms.DateInput):
     input_type = 'date'
-
-

@@ -6,6 +6,9 @@ app_name = 'parking'
 urlpatterns = [
     path('', login_view, name="login"),
     path('logout/', logout_view, name="logout"),
+    path('staff-list', staff_entry, name="staff_list"),
+    path('update-user/<object_pk>', update_staff, name="update_staff"),
+
     # path('blood-donation/', donation, name="donation"),
     # path('pending-donation/', pending_donation, name="pending_donation"),
     # path('save-test/<donation_id>', save_test, name="save_test"),
